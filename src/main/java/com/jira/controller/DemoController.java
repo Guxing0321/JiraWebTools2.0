@@ -32,6 +32,14 @@ public class DemoController {
     private  LdapCheck ldapCheck;
 	private Logger logger = Logger.getLogger(DemoController.class);
 
+	
+	
+	/**
+	 * 
+	 * 
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/myTest")
 	public String loginToIndexPage2(HttpServletRequest request) {
 	 logger.info("myTest....");
