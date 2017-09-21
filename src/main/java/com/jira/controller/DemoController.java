@@ -233,7 +233,7 @@ public class DemoController {
 			ldapCheck.closeLdap();
 			//开始添加组
 			ArrayList<String> failedAddList= new ArrayList<String>();
-			System.out.println("看看有几个组在里面："+validGroupList.size());
+			//System.out.println("看看有几个组在里面："+validGroupList.size());
 			if(validUserList !=null && validGroupList !=null){
 				for (String validUser : validUserList){
 					String addGroupResult = CreateCorpJiraUsers.addJiraGroup(validUser, validGroupList);
@@ -247,17 +247,18 @@ public class DemoController {
 			//存放相关信息，便于前台使用
 	        request.getSession().setAttribute("totalInputUserNum","The total number of input User data is "+ totalInputUserNum);
 	        request.getSession().setAttribute("totalInputGroupNum","The total number of input Group data is "+ totalInputGroupNum);
-            if(validUserList != null){
+            if(validUserList != null && !validUserList.isEmpty()){
             	request.getSession().setAttribute("validUserNum","The total number of valid User is "+ validUserList.size());
 			}else{
 				request.getSession().setAttribute("validUserNum","The total number of valid User is 0,so All failed!");
 			}
-	        if(validGroupList != null){
+	        if(validGroupList != null && !validGroupList.isEmpty()){
+	        	//System.out.println("validGroupList.size()="+validGroupList.size());
 	        	request.getSession().setAttribute("validGroupNum","The total number of valid group is "+ validGroupList.size());
 			}else{
 				request.getSession().setAttribute("validGroupNum","The total number of valid group is 0，so All failed!");
 			}
-	        if(validUserList != null && validGroupList != null){
+	        if(validUserList != null && !validUserList.isEmpty() && validGroupList != null && !validGroupList.isEmpty()){
 	        	request.getSession().setAttribute("TotalSuccessNum","Total successed num is "+validUserList.size());
 	        }else{
 	        	request.getSession().setAttribute("TotalSuccessNum","Total successed num is 0!");
